@@ -1,10 +1,10 @@
 # 42 Piscine Projets
 
 ## Shell Projets
-![Alt text](/Shell.png"a title")
+![Alt text](https://github.com/mtalhaaygen/42PiscineProjets/blob/main/Shell.png"a title")
 
 ## C Projets
-![Alt text](/c.png"a title")
+![Alt text](https://github.com/mtalhaaygen/42PiscineProjets/blob/main/c.png"a title")
 
 
 
