@@ -31,6 +31,8 @@
 | ------------- |:-------------:|:-------------:| -----:|
 | [ft_substr](https://github.com/mtalhaaygen/libft/blob/master/ft_substr.c) | char *ft_substr(char const *s, unsigned int start, size_t len); |  qqq | char * |
 ##### BONUS FUNCTİONS
+| Function names | ddfdghjgkjldfghfjgfghfgh | Brief Descirption | Return value  |
+| ------------- |:-------------:|:-------------:| -----:|
 | [ft_lstnew](https://github.com/mtalhaaygen/libft/blob/master/ft_lstnew.c) | char *ft_substr(char const *s, unsigned int start, size_t len); |  qqq | qqq |
 | [ft_lstadd_front](https://github.com/mtalhaaygen/libft/blob/master/ft_lstadd_front.c) | void ft_lstadd_front(t_list **lst, t_list *new); | listenin başına verilen yeni elemanı (new) ekler | void |
 | [ft_lstsize](https://github.com/mtalhaaygen/libft/blob/master/ft_lstsize.c) | int ft_lstsize(t_list *lst); |  qqq | int |
