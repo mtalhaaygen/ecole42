@@ -1,14 +1,26 @@
-#include <unistd.h>
-#include <stdio.h>
 
-void ft_putchar_fd(int c, int fd)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/16 13:53:08 by maygen            #+#    #+#             */
+/*   Updated: 2022/10/16 13:53:08 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 /*
  * fd -> 0 1 2
  * fopen(file) file-> fd=3
- * */
+ * 
 int main()
 {
 	char str[99] = " aygen";
@@ -24,4 +36,4 @@ int main()
 	}
 	fclose(fptr);
 	fclose(fptr2);
-}
+}*/
