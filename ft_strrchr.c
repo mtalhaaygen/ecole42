@@ -1,8 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/17 16:29:15 by maygen            #+#    #+#             */
+/*   Updated: 2022/10/17 16:29:20 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 char *ft_strrchr(const char *str, int c)
 {
 	int i;
 
+	if(c == '\0')
+		return (str + ft_strlen(str));
 	i = ft_strlen(str);
 	i--;
 	while(i >= 0)
@@ -11,7 +25,5 @@ char *ft_strrchr(const char *str, int c)
 			return ((char *)str + i);
 		i--;
 	}
-	/*if((unsigned char)c == '\0')
-		return ((char *)str);*/
 	return NULL;
 }

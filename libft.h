@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:26:10 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/16 14:04:20 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/17 14:50:21 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 typedef struct		s_list
 {

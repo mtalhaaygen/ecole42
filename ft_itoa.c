@@ -10,6 +10,11 @@ int counter(int n)
 		n = (n * -1);
 		count++;
 	}
+	if( n == -0)
+	{
+		n = 0;
+		count++;
+	}
 	while (n > 0)
 	{
 		n = n / 10;
@@ -37,6 +42,8 @@ char	*ft_itoa(int n)
 			return (NULL);
 		if (n < 0)
 			kap = kap * -1;
+		if (n == -0)
+			kap = 0;
 		c[count] = 0;
 		while (count != 0)
 		{
@@ -49,8 +56,3 @@ char	*ft_itoa(int n)
 	}
 	
 }
-/*int main()
-{
-	printf("çıktı : %s",ft_itoa(-2147483648));
-
-}*/

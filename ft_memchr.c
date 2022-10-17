@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/17 19:18:22 by maygen            #+#    #+#             */
+/*   Updated: 2022/10/17 19:18:28 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 void *ft_memchr(const void *s, int c, size_t n)
 {
@@ -12,17 +24,3 @@ void *ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-/*
-int main( void )
-{
-    const char *cp = "Bilgisayar";
-    const char cd = 'g';
-
-    printf("%c karakterinin bellek adresi: %p\n", cd, memchr(cp, cd, strlen(cp)));
-
-    return 0;
-}
-*/
-/*
-g karakterinin bellek adresi: 00403027
- * */
