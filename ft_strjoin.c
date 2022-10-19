@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:56:59 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/17 20:20:07 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/19 03:49:33 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	while (s1[i])
 	{
+
 		str[i] = s1[i];
 		i++;
 	}

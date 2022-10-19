@@ -1,23 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/19 01:03:47 by maygen            #+#    #+#             */
+/*   Updated: 2022/10/19 03:52:56 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
+	if (s)
+	{	
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
 	}
 }
-
-/*int main()
-{
-	int i = 0;
-	FILE *f1;
-	f1 = fopen("/Users/maygen/desktop/talha.txt","w");
-	ft_putstr_fd("talha",3);
-	fclose(f1);
-
-}*/

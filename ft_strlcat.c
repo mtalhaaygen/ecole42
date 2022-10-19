@@ -6,32 +6,21 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 18:01:24 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/17 20:10:25 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/19 03:28:03 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	ret;
 
-	i = 0;
-	if(!dst)
-		return (dst);
-	while (*dst && i < dstsize)
-	{
-		++dst;
-		++i;
-	}
-	ret = ft_strlcpy(dst, src, dstsize - i);
-	return (ret + i);
+	if (!dst && !size)
+		return (0);
+	i = ft_strlen(dst);
+	if (i >= size)
+		return (ft_strlen(src) + size);
+	ft_strlcpy((dst + i), src, size - i);
+	return (i + ft_strlen(src));
 }
-/*int main()
-{
-	char b[0xF] = "nyan !";
-	ft_strlcat(((void *)0), b, 0);
-	printf("hello");
-	return 0;
-}*/

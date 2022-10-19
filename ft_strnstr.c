@@ -6,30 +6,35 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:03:48 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/17 18:00:49 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/19 03:45:27 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	j;
-    
-	if (haystack == NULL || needle == NULL)
-		return (NULL);
-	if (!needle[0])
-		return ((char*)haystack);
+	size_t	n;
+	size_t	flag;
+	size_t	needle_len;
+
+	needle_len = ft_strlen(needle);
 	i = 0;
-	while (haystack[i] && i < len)
+	if (!needle_len)
+		return ((char *)(haystack));
+	else if (len == 0 || !haystack[0])
+		return (0);
+	while (i < len)
 	{
-		j = 0;
-		while (haystack[i + j] && needle[j] &&
-				i + j < len && haystack[i + j] == needle[j])
-			j++;
-		if (!needle[j])
-			return ((char*)(haystack + i));
+		n = i;
+		flag = 0;
+		while ((*(needle + flag) == *(haystack + n)) && *(needle + flag) != '\0'
+			&& n++ < len)
+			flag++;
+		if (flag == needle_len)
+			return ((char *)(haystack + i));
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

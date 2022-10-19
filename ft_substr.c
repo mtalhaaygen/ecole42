@@ -15,12 +15,12 @@
 
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-    char *ptr;
-    int i;
-    size_t j;
+    char    *ptr;
+    int     i;
+    size_t  j;
 
-    if(!s)
-        return NULL;
+    if (!s)
+        return (NULL);
     ptr = (char *)malloc(sizeof(char) * (len + 1));
     if (!ptr)
 		return (NULL);

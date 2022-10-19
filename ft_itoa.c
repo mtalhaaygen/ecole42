@@ -1,16 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/19 01:02:19 by maygen            #+#    #+#             */
+/*   Updated: 2022/10/19 01:02:27 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
-int counter(int n)
+int	counter(int n)
 {
 	int count;
 
 	count = 0;
-	if(n < 0)
+	if (n < 0)
 	{
 		n = (n * -1);
 		count++;
 	}
-	if( n == -0)
+	if ( n == -0)
 	{
 		n = 0;
 		count++;
@@ -20,7 +31,6 @@ int counter(int n)
 		n = n / 10;
 		count++;
 	}
-
 	return count;
 }
 char	*ft_itoa(int n)
@@ -30,9 +40,7 @@ char	*ft_itoa(int n)
 	int		kap;
 
 	if(n == -2147483648)
-	{
 	   return ft_strdup("-2147483648");
-	}
 	else
 	{
 		kap = n;
@@ -54,5 +62,4 @@ char	*ft_itoa(int n)
 		}
 		return (c);
 	}
-	
 }
