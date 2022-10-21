@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,50 +6,37 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 13:53:52 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/16 13:53:52 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/21 13:05:10 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-    char    *ptr;
-    int     i;
-    size_t  j;
+	char	*ptr;
+	int		i;
+	size_t	j;
 
-    if (!s)
-        return (NULL);
-    ptr = (char *)malloc(sizeof(char) * (len + 1));
-    if (!ptr)
+	if (!s)
 		return (NULL);
-    i= 0;
-    j = 0;
-    while(s[i])
-    {
-        if(i >= start  && j < len)
-        {
-            ptr[j]= s[i];
-            j++;
-        }
-        i++;
-    }
-    ptr[j] = '\0';
-    return (ptr);
-}
-/*int main()
-{
-    char str[] = "i just want this part #############";
-	size_t size = 20;
-
-	char *ret = ft_substr(str, 5, size);
-    printf("%s",ret);
-	str[size + 5] = 0;
-	if (!memcmp(ret, str + 5, size + 1))
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
 	{
-		free(ret);
-		printf("başarılı");
+		if (i >= start && j < len)
+		{
+			ptr[j++] = s[i];
+		}
+		i++;
 	}
-	free(ret);
-	printf("fail");
-}*/
+	ptr[j] = '\0';
+	return (ptr);
+}

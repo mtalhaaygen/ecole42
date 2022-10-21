@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,17 +6,17 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:15:05 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/16 12:15:05 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/21 12:06:19 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if(!lst)
+	if (!lst)
 		return (0);
-	while(lst->next)
+	while (lst->next)
 		lst = lst->next;
 	return (lst);
 }

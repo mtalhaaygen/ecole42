@@ -1,13 +1,12 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybulacak <ybulacak@student.42.fr>          +#+  +:+       +#+        */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 07:37:50 by ybulacak          #+#    #+#             */
-/*   Updated: 2022/07/07 14:57:39 by ybulacak         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:56:24 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +30,3 @@ void	*ft_memmove(void *dst, const void *src, size_t	len)
 		ft_memcpy(dst1, src1, len);
 	return (dst);
 }
-// int main()
-// {
-// 	char s1[]= "yusuf";
-// 	char s2[]= "kerim";
-// 	printf("%s",ft_memmove(s2+1,s2,4));
-// }

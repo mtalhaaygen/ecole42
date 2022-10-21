@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 11:58:22 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/19 01:13:07 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/21 12:10:23 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
+	if (size > count * size)
+		return (0);
 	ptr = (void *)malloc(count * size);
 	if (!ptr)
 		return (NULL);

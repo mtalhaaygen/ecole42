@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,18 +6,18 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:43:53 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/16 12:43:53 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/21 12:09:03 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(!lst[0])
+	if (!lst[0])
 		return ;
 	while (lst[i])
 	{

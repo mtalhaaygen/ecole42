@@ -6,14 +6,15 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 01:02:19 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/19 01:02:27 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/21 12:03:38 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-int	counter(int n)
+
+static int	counter(int n)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (n < 0)
@@ -21,7 +22,7 @@ int	counter(int n)
 		n = (n * -1);
 		count++;
 	}
-	if ( n == -0)
+	if (n == -0)
 	{
 		n = 0;
 		count++;
@@ -31,35 +32,39 @@ int	counter(int n)
 		n = n / 10;
 		count++;
 	}
-	return count;
+	return (count);
 }
-char	*ft_itoa(int n)
+
+static char	*kitoa(int n)
 {
 	char	*c;
 	int		count;
 	int		kap;
 
-	if(n == -2147483648)
-	   return ft_strdup("-2147483648");
-	else
+	kap = n;
+	count = counter(n);
+	c = malloc(sizeof(char) * (count + 1));
+	if (!c)
+		return (NULL);
+	if (n < 0)
+		kap = kap * -1;
+	if (n == -0)
+		kap = 0;
+	c[count] = 0;
+	while (count != 0)
 	{
-		kap = n;
-		count = counter(n);
-		c = malloc(sizeof(char) * (count + 1));
-		if (!c)
-			return (NULL);
+		c[--count] = (kap % 10) + 48;
+		kap = (int)(kap / 10);
 		if (n < 0)
-			kap = kap * -1;
-		if (n == -0)
-			kap = 0;
-		c[count] = 0;
-		while (count != 0)
-		{
-			c[--count] = (kap % 10) + 48;
-			kap = (int)(kap / 10);
-			if (n < 0)
-				c[0] = '-';
-		}
-		return (c);
+			c[0] = '-';
 	}
+	return (c);
+}
+
+char	*ft_itoa(int n)
+{
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	else
+		return (kitoa(n));
 }

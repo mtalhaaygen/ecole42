@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 10:41:29 by maygen            #+#    #+#             */
+/*   Updated: 2022/10/21 11:55:21 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
 static int	count_words(const char *str, char c)
 {
-	int i;
-	int trigger;
+	int		i;
+	int		trigger;
 
 	i = 0;
 	trigger = 0;
@@ -35,14 +46,16 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
 	int		index;
 	char	**split;
 
-	if (!s || !(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
+	if (!s)
+		return (0);
+	if (!(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
 		return (0);
 	i = 0;
 	j = 0;
