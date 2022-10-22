@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 16:29:15 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 11:10:11 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 08:57:53 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *str, int c)
 	int	i;
 
 	if (c == '\0')
-		return (str + ft_strlen(str));
+		return ((char *)str + ft_strlen(str));
 	i = ft_strlen(str);
 	i--;
 	while (i >= 0)

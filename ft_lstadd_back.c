@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 12:40:57 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 10:30:40 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 09:12:26 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	int	i;
 
-	if (!new)
+	if (!new || !lst)
 		return ;
 	if (!*lst)
 	{
 		*lst = new;
 		return ;
 	}
-	i = ft_lstsize(*lst);
-	lst[i - 1]->next = new;
+	ft_lstlast(*lst)->next = new;
+	ft_lstlast(*lst)->next = NULL;
 }

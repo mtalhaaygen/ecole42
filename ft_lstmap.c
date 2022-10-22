@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:51:29 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 10:53:48 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 09:17:31 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	t_list	*mapped;
+	t_list	*tmp;
 
-	if (!lst)
-		return (0);
-	new_lst = 0;
+	if (lst == NULL || f == NULL || del == NULL)
+		return (NULL);
+	mapped = NULL;
 	while (lst)
 	{
-		elem = ft_lstnew(f(lst->content));
-		if (!(elem))
+		if ((tmp = ft_lstnew((*f)(lst->content))) == NULL)
 		{
-			ft_lstclear(&new_lst, del);
-			return (0);
+			ft_lstclear(&tmp, del);
+			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, elem);
+		ft_lstadd_back(&mapped, tmp);
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (mapped);
 }
