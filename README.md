@@ -39,6 +39,6 @@
 | [ft_lstlast](https://github.com/mtalhaaygen/libft/blob/master/ft_lstlast.c) | t_list *ft_lstlast(t_list *lst); |  t_list listesinin son elemanını döner | t_list |
 | [ft_lstadd_back](https://github.com/mtalhaaygen/libft/blob/master/ft_lstadd_back.c) | void ft_lstadd_back(t_list **lst, t_list *new); |  listenin sonuna verilen yeni elemanı (new) ekler | void |
 | [ft_lstdelone](https://github.com/mtalhaaygen/libft/blob/master/ft_lstdelone.c) | void ft_lstdelone(t_list *lst, void (*del)(void*)); |  verilen elemanın contentine delfonksiyonunu uygular daha sonra elemanı freeler  | void |
-| [ft_lstclear](https://github.com/mtalhaaygen/libft/blob/master/ft_lstclear.c) | void ft_lstclear(t_list **lst, void (*del)(void*)); |  qqq | void |
+| [ft_lstclear](https://github.com/mtalhaaygen/libft/blob/master/ft_lstclear.c) | void ft_lstclear(t_list **lst, void (*del)(void*)); | verilen t_list listesinin elemanlarını sırayla gezer ve delone yardımıyla siler | void |
 | [ft_lstiter](https://github.com/mtalhaaygen/libft/blob/master/ft_lstiter.c) | void ft_lstiter(t_list *lst, void (*f)(void *)); |  Listenin üzerinde dolanır ve ‘f’ fonksiyonunu listenin her elemanının contentine uygular. | void |
-| [ft_lstmap](https://github.com/mtalhaaygen/libft/blob/master/ft_lstmap.c) | t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *)); |  qqq | t_list |
+| [ft_lstmap](https://github.com/mtalhaaygen/libft/blob/master/ft_lstmap.c) | t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *)); | verilen fonksiyonu verilen t_listin bütün elemanlarının içeriklerine uygulayıp yeni bir t_list dizisine bunları ekler, yeni diziyi return eder | t_list |
