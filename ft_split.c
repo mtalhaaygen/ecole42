@@ -6,13 +6,13 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:41:29 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/22 10:28:03 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 10:55:15 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_word_count(char const *s, char c)
+static size_t	ft_word_count(char const *s, char c)
 {
 	size_t	i;
 	size_t	rtn;
@@ -30,7 +30,7 @@ size_t	ft_word_count(char const *s, char c)
 	return (rtn);
 }
 
-char	**protect(void)
+static char	**protect(void)
 {
 	char	**rtn;
 

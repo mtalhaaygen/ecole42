@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:39:04 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 12:21:40 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 10:49:16 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res);
 }
-/*int main()
-{
-	char n[40] = "-99999999999999999999999999";
-	int i1 = atoi(n);
-	int i2 = ft_atoi(n);
-	if (i1 == i2)
-		printf("basarili");
-	else
-		printf("i1 = %d\ni2 = %d",i1,i2);
-}*/
