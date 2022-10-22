@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:51:29 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/22 09:17:31 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 09:44:37 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	mapped = NULL;
 	while (lst)
 	{
-		if ((tmp = ft_lstnew((*f)(lst->content))) == NULL)
+		tmp = ft_lstnew((*f)(lst->content));
+		if (tmp == NULL)
 		{
 			ft_lstclear(&tmp, del);
 			return (NULL);

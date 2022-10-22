@@ -6,71 +6,64 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:41:29 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 15:27:13 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/22 10:28:03 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(const char *str, char c)
+size_t	ft_word_count(char const *s, char c)
 {
-	int		i;
-	int		trigger;
+	size_t	i;
+	size_t	rtn;
 
 	i = 0;
-	trigger = 0;
-	while (*str)
+	rtn = 0;
+	while (s[i])
 	{
-		if (*str != c && trigger == 0)
-		{
-			trigger = 1;
-			i++;
-		}
-		else if (*str == c)
-			trigger = 0;
-		str++;
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != 0)
+			rtn++;
+		i++;
 	}
-	return (i);
+	if (s[0] != c)
+		rtn++;
+	return (rtn);
 }
 
-static char	*word_dup(const char *str, int start, int finish)
+char	**protect(void)
 {
-	char	*word;
-	int		i;
+	char	**rtn;
 
-	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	while (start < finish)
-		word[i++] = str[start++];
-	word[i] = '\0';
-	return (word);
+	rtn = ft_calloc(1, sizeof(char *));
+	rtn[0] = NULL;
+	return (rtn);
 }
 
 char	**ft_split(char const *s, char c)
 {
+	char	**rtn;
+	size_t	word_count;
 	size_t	i;
 	size_t	j;
-	int		index;
-	char	**split;
+	size_t	flag;
 
-	if (!s)
-		return (0);
-	if (!(split = malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (0);
 	i = 0;
 	j = 0;
-	index = -1;
-	while (i <= ft_strlen(s))
+	if (!s || s[0] == 0)
+		return (protect());
+	word_count = ft_word_count(s, c);
+	rtn = ft_calloc(word_count + 1, sizeof(char *));
+	if (!rtn)
+		return (NULL);
+	while (i < word_count)
 	{
-		if (s[i] != c && index < 0)
-			index = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
-		{
-			split[j++] = word_dup(s, index, i);
-			index = -1;
-		}
-		i++;
+		while (s[j] == c)
+			j++;
+		flag = j;
+		while (s[j] != c && s[j])
+			j++;
+		rtn[i++] = ft_substr(s, flag, j - flag);
 	}
-	split[j] = 0;
-	return (split);
+	rtn[i] = NULL;
+	return (rtn);
 }
