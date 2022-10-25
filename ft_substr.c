@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 13:53:52 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 13:05:10 by maygen           ###   ########.fr       */
+/*   Updated: 2022/10/25 21:49:51 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ptr;
-	int		i;
-	size_t	j;
+	char			*ptr;
+	unsigned int	i;
+	size_t			j;
 
 	if (!s)
 		return (NULL);
