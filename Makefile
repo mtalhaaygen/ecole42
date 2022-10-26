@@ -53,7 +53,7 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 
 .c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	ar r $(NAME) $(OBJS) $(BONUS_OBJS)
