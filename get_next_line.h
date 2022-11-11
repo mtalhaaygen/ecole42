@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:18:46 by maygen            #+#    #+#             */
-/*   Updated: 2022/11/10 17:30:10 by maygen           ###   ########.fr       */
+/*   Updated: 2022/11/11 16:30:54 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-
+#include <strings.h>
 #endif
