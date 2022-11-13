@@ -6,41 +6,36 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:18:50 by maygen            #+#    #+#             */
-/*   Updated: 2022/11/11 17:20:34 by maygen           ###   ########.fr       */
+/*   Updated: 2022/11/13 17:29:51 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-# define BUFFER_SİZE 31
 #include "get_next_line.h"
+
+char *multiRead(char *st,int fd) // bu fonksiyonda while içerisinde buffersize kadar okuyup st ye join le ekleyeceğiz
+{
+	char *l;
+	int lw;
+
+	l = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	while (lw != 0 && !ft_strchr(st, '\n'))
+	{
+		lw = read(fd , l, BUFFER_SIZE);
+		st = ft_strjoin(st, l);
+	}
+
+	return (st);
+}
 
 char *get_next_line(int fd)
 {
-	// int fd;
-	int size;
-	char *str;
+	static char	*str;
+	char	*line;
 
-	str = malloc(100 * sizeof(char));
-	if (!str)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	open("talha.txt", O_RDONLY);
-	size = read(3, str, 20);
-
-	return (0);
-}
-
-int main()
-{
-	int fd;
-	int size;
-	char *str;
-
-	str = malloc(21 * sizeof(char));
-	if (!str)
-		return (0);
-	fd = open("talha.txt", O_RDONLY);
-	size = read(fd, str, 999);
-	//printf("fd = %d  returned that %d bytes were read\n",fd,size);
-	str[size] = '\0';
-	printf("%s\n",str);
+	str = multiRead(str,fd);
+	//line = liner(str); // bu fonksiyon ile line stringine str nin \n e kadar ki kısmını atacağız
+	//str = next(str); // bu fonksiyon ile str değişkeni \n den sonra ki karakteri gösterecek
+	return (line);
 }
