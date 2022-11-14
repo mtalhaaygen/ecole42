@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 16:18:49 by maygen            #+#    #+#             */
-/*   Updated: 2022/11/15 01:46:12 by maygen           ###   ########.fr       */
+/*   Created: 2022/11/15 01:36:48 by maygen            #+#    #+#             */
+/*   Updated: 2022/11/15 02:06:07 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *str)
 {
-	size_t	i;
+	size_t	c;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strchr(char *str, int c)
-{
-	int		i;
-
-	i = 0;
+	c = 0;
 	if (!str)
 		return (0);
-	if (c == '\0')
-		return ((char *)&str[ft_strlen(str)]);
-	while (str[i] != '\0')
-	{
-		if (str[i] == (char)c)
-			return ((char *)&str[i]);
-		i++;
-	}
-	return (0);
+	while (str[c] != '\0')
+		c++;
+	return (c);
 }
 
 char	*ft_strjoin(char *str, char *buff)
@@ -68,53 +52,71 @@ char	*ft_strjoin(char *str, char *buff)
 	return (pstr);
 }
 
+char	*ft_strchr(char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	if (c == '\0')
+		return ((char *)&str[ft_strlen(str)]);
+	while (str[i] != '\0')
+	{
+		if (str[i] == (char) c)
+			return ((char *)&str[i]);
+		i++;
+	}
+	return (0);
+}
+
 char	*liner(char *str)
 {
-	char	*line;
 	int		i;
+	char	*my_line;
 
 	i = 0;
 	if (!str[i])
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i++;
-	line = malloc(((i + 2) * sizeof(char)));
-	if (!line)
+	my_line = (char *)malloc(sizeof(char) * (i + 2));
+	if (!my_line)
 		return (NULL);
 	i = 0;
 	while (str[i] && str[i] != '\n')
 	{
-		line[i] = str[i];
+		my_line[i] = str[i];
 		i++;
 	}
 	if (str[i] == '\n')
-		line[i++] = '\n';
-	line[i] = 0;
-	return (line);
+		my_line[i++] = '\n';
+	my_line[i] = '\0';
+	return (my_line);
 }
 
 char	*next(char *str)
 {
+	int		c;
 	int		i;
-	int		j;
-	char	*newstr;
+	char	*my_line;
 
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (!str[i])
+	c = 0;
+	while (str[c] && str[c] != '\n')
+		c++;
+	if (!str[c])
 	{
 		free(str);
 		return (NULL);
-	}
-	newstr = (char *)malloc(sizeof(char) * (ft_strlen(str) - i + 1));
-	if (!newstr)
+	}	
+	my_line = (char *)malloc(sizeof(char) * (ft_strlen(str) - c + 1));
+	if (!my_line)
 		return (NULL);
-	i++;
-	j = 0;
-	while (str[i])
-		newstr[j++] = str[i++];
-	newstr[j] = '\0';
+	c++;
+	i = 0;
+	while (str[c])
+		my_line[i++] = str[c++];
+	my_line[i] = '\0';
 	free(str);
-	return (newstr);
+	return (my_line);
 }

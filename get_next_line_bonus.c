@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 16:18:50 by maygen            #+#    #+#             */
-/*   Updated: 2022/11/15 01:43:32 by maygen           ###   ########.fr       */
+/*   Created: 2022/11/15 01:35:52 by maygen            #+#    #+#             */
+/*   Updated: 2022/11/15 01:57:17 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*multiread(char *str, int fd)
 {
@@ -39,15 +39,15 @@ char	*multiread(char *str, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = multiread(str, fd);
-	if (!str)
+	str[fd] = multiread(str[fd], fd);
+	if (!str[fd])
 		return (NULL);
-	line = liner(str);
-	str = next(str);
+	line = liner(str[fd]);
+	str[fd] = next(str[fd]);
 	return (line);
 }
