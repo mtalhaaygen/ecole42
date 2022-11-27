@@ -1,7 +1,10 @@
 #include <stdio.h>
 
-int	digitcount(const char *str, int i)
+int	digitcount(const char *str)
 {
+	int i;
+
+	i = 0;
 	while(str[i])
 		i++;
 	return i;
@@ -9,7 +12,11 @@ int	digitcount(const char *str, int i)
 
 int	mypow(int taban, int us)
 {
-	while(us <= 2)
+	if (us == 0)
+		return (1);
+	if (us == 1)
+		return taban;
+	while(us >= 1)
 	{
 		taban *= taban;
 		us--;
@@ -37,7 +44,7 @@ int ft_atoi_base(const char *str, int str_base)
 		i++;
 	}
 	//strnin kaç basamaklı olduğunu bul örnegin str = 7CF olsun bu durumda basamak sayısı 3
-	digit = digitcount(str, i);
+	digit = digitcount(str + i);
 	digit--;
 	while(str[i] && digit >= 0)
 	{
@@ -46,7 +53,8 @@ int ft_atoi_base(const char *str, int str_base)
 		{
 			if (lbase[j] == str[i])
 			{
-				num += (mypow(str_base,2) * j);
+				num += (mypow(str_base, digit) * j);
+				digit--;
 				break;//amaç ikinci while dan çıkmak
 			}
 			j++;
@@ -64,6 +72,6 @@ int ft_atoi_base(const char *str, int str_base)
 
 int main()
 {
-	int num = ft_atoi_base("	 -7cf",16);
+	int num = ft_atoi_base("	 -11110000110010",2);
 	printf("%d", num);
 }
