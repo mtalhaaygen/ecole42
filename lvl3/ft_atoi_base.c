@@ -12,17 +12,19 @@ int	digitcount(const char *str)
 
 int	mypow(int taban, int us)
 {
+	int sum = 1;
 	if (us == 0)
 		return (1);
 	if (us == 1)
 		return taban;
 	while(us >= 1)
 	{
-		taban *= taban;
+		sum *= taban;
 		us--;
 	}
-	return (taban);
+	return (sum);
 }
+
 int ft_atoi_base(const char *str, int str_base)
 {
 	int i;
@@ -31,6 +33,7 @@ int ft_atoi_base(const char *str, int str_base)
 	int num;
 	int digit;
 	char *lbase = "0123456789abcdef";
+	char *ubase = "0123456789ABCDEF";
 
 	i = 0;
 	neg = 1;
@@ -42,8 +45,7 @@ int ft_atoi_base(const char *str, int str_base)
 		if (str[i] == '-')
 			neg *= -1;
 		i++;
-	}
-	//strnin kaç basamaklı olduğunu bul örnegin str = 7CF olsun bu durumda basamak sayısı 3
+	}//strnin kaç basamaklı olduğunu bul örnegin str = 7CF olsun bu durumda basamak sayısı 3
 	digit = digitcount(str + i);
 	digit--;
 	while(str[i] && digit >= 0)
@@ -51,7 +53,7 @@ int ft_atoi_base(const char *str, int str_base)
 		j = 0;
 		while(lbase[j])
 		{
-			if (lbase[j] == str[i])
+			if (lbase[j] == str[i] || ubase[j] == str[i])
 			{
 				num += (mypow(str_base, digit) * j);
 				digit--;
@@ -62,16 +64,16 @@ int ft_atoi_base(const char *str, int str_base)
 		i++;
 	}
 	return (neg * num);
-	// str mizin ilk karakteri 7 kaçıncı indexde oluyor bul örneğin 7
-	// 3 karakterli oldugundan bir eksiği 2 den başlayıp (16^2 * 7) + 
-	// taban 16 oldugu durum için
-	// strmizin ikinci karakteri C kaçıncı indexte (16^1 * 12) +
-	// strmizin üçüncü karakteri F kaçıncı indexte (16^0 * 15)
-	// sonuc 1999 olacak num = 1999;
 }
+	// str mizin ilk karakteri 7 kaçıncı indexde oluyor bul örneğin 7
+	// taban 16 oldugu durum için
+	// 3 karakterli oldugundan bir eksiği 2 den başlayıp (16^2 * 7) + 
+	// strmizin ikinci karakteri C kaçıncı indexte 12 (16^1 * 12) +
+	// strmizin üçüncü karakteri F kaçıncı indexte 15 (16^0 * 15)
+	// sonuc 1999 olacak num = 1999;
 
 int main()
 {
-	int num = ft_atoi_base("	 -11110000110010",2);
+	int num = ft_atoi_base("	 +25772666",8);
 	printf("%d", num);
 }
