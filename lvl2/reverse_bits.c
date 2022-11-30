@@ -5,13 +5,13 @@ unsigned char	reverse_bits(unsigned char octet)
 	unsigned char new;
 	int i;
 
-	i = 7;
+	i = 0;
 	new = 0;
 	while (i <= 7)
 	{
-		if (((octet >> i) & (1 << (i -7))) ==  (1 << (i - 7)))
-			new += (1 << i);
-		i--;
+		if (((octet >> (7 - i)) & 1) == 1)
+			new |= (1 << i);
+		i++;
 	}
 	return (new);
 }
