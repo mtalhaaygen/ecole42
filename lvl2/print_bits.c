@@ -21,7 +21,7 @@ void	print_bits(unsigned char octet)
 
 	i = 8;
 	// parametre olarak en fazla 8 bitlik bir değer alabilir
-	while (i >= 1)
+	while (i >= 0)
 	{
 		if (octet / mypow(2,i) > 0)
 		{
@@ -37,7 +37,7 @@ void	print_bits(unsigned char octet)
 
 int main()
 {
-	print_bits(2);
+	print_bits(1);
 	write(1, "\n",1);
 	print_bits(255);
 	write(1, "\n",1);
