@@ -1,10 +1,3 @@
-//
-//***********************************
-//                                  *
-//         bu kod daha tamamlanmadı *
-//                                  *
-//***********************************
-//
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -75,6 +68,7 @@ char	**ft_split(char *str)
 		if (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
 		{
 			split[j] = ft_substr(str, 0, i);
+			//printf("%s\n", split[j]);
 			str = ft_substr(str, (i + 1), ft_strlen(str));
 			j++;
 			i = 0;
@@ -82,8 +76,10 @@ char	**ft_split(char *str)
 		i++;
 	}
 	split[j] = ft_substr(str, 0, ft_strlen(str));
+	//printf("%s\n", split[j]);
 	j++;
-	split[j] = 0;
+	split[j] = malloc(1);
+	//printf("%s\n", split[j]);
 	return (split);
 }
 
@@ -98,6 +94,5 @@ int main()
 	printf("%s\n", new[4]);
 	printf("%s\n", new[5]);
 	printf("%s\n", new[6]);
-	printf("%s\n", new[7]); // null olmasını bekliyorum
-	//printf("%s\n", new[8]); // ram da herhangi bir yer
+	printf("%s\n", new[7]);// null olmasını bekliyorum
 }

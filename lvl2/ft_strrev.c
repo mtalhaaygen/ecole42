@@ -24,7 +24,7 @@ char	*ft_strrev(char *str)
 		return (0);
 	j = 0;
 	i--;
-	while (newstr[j])
+	while (str[j])
 	{
 		newstr[j] = str[i];
 		i--;
