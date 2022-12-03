@@ -1,4 +1,3 @@
-// bu fonksiyon tamamlanmadı
 #include <stdio.h>
 unsigned char	reverse_bits(unsigned char octet)
 {
