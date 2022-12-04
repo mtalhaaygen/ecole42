@@ -20,8 +20,8 @@ int main(int gc, char **gv)
 			write(1, &gv[i][j], 1);
 			j++;
 		}
+		write(1, "\n", 1);
 		i++;
 	}
-	write(1, "\n", 1);
 	return (0);
 }
