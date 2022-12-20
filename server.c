@@ -1,37 +1,69 @@
-#include <unistd.h>
-// #include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/20 18:01:53 by maygen            #+#    #+#             */
+/*   Updated: 2022/12/20 18:20:02 by maygen           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h> // usleep getpid
 #include <signal.h>
-#include <stdio.h>
 
-#include "ft_printf/ft_printf.h"
+void ft_putnbr(int nb)
+{
+    if (nb < 10)
+	{
+        nb += 48;
+		write(1, &nb, 1);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+}
 
-void handler(int num)
+static void myhandler(int signum)
 {
-    write(STDOUT_FILENO, "I won't die!\n",13);
-    printf("signal %d", num);
+    char new;
+    static int i;
+    char gelenk;
+    gelenk = 0;
+    if (signum == 30)
+    {
+        gelenk |= (1 << i);
+        new += gelenk;
+    }
+    if (i == 7)
+    {
+        write(1, &new, 1);
+        i = 0;
+        new = 0;
+        return ;
+    }
+    i++;
 }
-void seghandler(int num)
-{
-    write(STDOUT_FILENO, "Seg Fault!\n",10);
-    //exit("deneme");
-}
+
 int main()
 {
-    // char *p = NULL;
-
-
-    ft_printf("%d",signal(SIGINT, handler));
-    ft_printf("%d",signal(SIGSEGV, seghandler));
+    pid_t pid = getpid();
+    struct sigaction sa;
     
-    // signal(SIG_ERR, handler);
-    // signal(SIGUSR1, handler);
-    // signal(SIGUSR2, handler);
+    sa.sa_handler = myhandler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = SA_SIGINFO;
+    if (sigaction(SIGUSR1, &sa, NULL) == -1)
+        write(1, "hatalı dönüş değeri", 25);
 
-    //*p = "talha"; // segmentation fault
-    perror("recieved signal error");
-    while (1)
-    {
-        printf("pid : %d\n", getpid());
-        pause();    
-    }
+    signal(SIGUSR2, myhandler);
+
+    write(1,"pid : ", 7);
+    ft_putnbr(pid);
+    write(1, "\n", 1);
+    while (1);
+    return (0);
 }
