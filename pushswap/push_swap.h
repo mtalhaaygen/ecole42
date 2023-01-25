@@ -6,13 +6,15 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:40:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/01/10 18:13:17 by maygen           ###   ########.fr       */
+/*   Updated: 2023/01/25 16:07:14 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
+#include "stdio.h"
+#include "../libft/libft.h"
+#include <stdlib.h>
 typedef struct mystacks {
 	int	*a;
 	int	*b;
@@ -20,16 +22,9 @@ typedef struct mystacks {
 	size_t	bsize;
 }	t_mystack;
 
-// void	sa();
-// void	sb();
-// void	ss();
-// void	pa();
-// void	pb();
-// void	ra();
-// void	rb();
-// void	rr();
-// void	rra();
-// void	rrb();
-// void	rrr();
+void	pa(t_mystack mystacks);
+void	pb(t_mystack mystacks);
+void	rra(t_mystack mystacks);
+
 
 #endif
