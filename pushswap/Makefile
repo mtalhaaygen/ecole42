@@ -3,8 +3,10 @@ CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
 NAMELIB = ../libft/libft.a
 
-all: *.o $(NAMELIB) $(NAME)
-	$(CC) $(FLAGS) -o $(NAME) *.o $(LIBFT)
+all: $(NAME)
+
+$(NAME): *.o $(NAMELIB)
+	$(CC) $(FLAGS) -o $(NAME) *.o $(NAMELIB)
 
 *.o: *.c
 	$(CC) $(FLAGS) -c *.c
