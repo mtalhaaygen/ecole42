@@ -6,95 +6,145 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/01/31 08:27:00 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/01 15:57:04 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// indexleme yapılacak, 
-// gerekli görülen caseler için farklı bir algoritmaya sok, tester
-int	main(int gc, char **gv)
+
+void	ft_error()
+{
+	write(1, "Error\n", 5);
+}
+
+void	tofill(int gc, char **gv, t_mystack *mystacks)
 {
 	int			i;
-	int			j;
-	int			*tmp;
-	int			flag;
-	t_mystack	mystacks;
 
 	i = 1;
-	mystacks.asize = gc - 1;
-	mystacks.a = ft_calloc((mystacks.asize) ,sizeof(int));
-	mystacks.b = ft_calloc((mystacks.asize) ,sizeof(int));
-	tmp = ft_calloc((mystacks.asize) ,sizeof(int));
-	mystacks.bsize = 0;
+	mystacks->asize = gc - 1;
+	mystacks->a = ft_calloc((mystacks->asize) ,sizeof(int));
+	mystacks->b = ft_calloc((mystacks->asize) ,sizeof(int));
+	mystacks->bsize = 0;
 	while (i < gc)
 	{
 		// burada girilen değerlerle a stack i dolduruyorum
-		mystacks.a[i - 1] = ft_atoi(gv[i]);
+		mystacks->a[i - 1] = ft_atoi(gv[i]);
 		i++;
 	}
-	
-	j = 0;
-	while (j < 32) // (1 << 31) ifadesi son basabağı kontrol eder 1000 0000 0000 0000 0000 0000 0000 0000
+}
+
+int	isnumber(int gc, char **gv)
+{
+	int i;
+
+	gc--;
+	while (gc > 1)
 	{
-		// ******************************************************************
-		// ilk kontrol edilecek basamağın sıralı olup olmadığına bakıyoruz
-		i = mystacks.asize - 1; 
-		flag = mystacks.a[0] & (1 << j);
-		while (i >= 0)
+		i = 0;
+		while (gv[gc][i] != '\0')
 		{
-			if((mystacks.a[i] & (1 << j)) == flag)
-				i--;
-			else
+			if (!ft_isdigit(gv[gc][i]))
 			{
-				flag = -1;
-				break;
-			}
-		}
-		if (flag != -1)
-		{
-			j++;
-			continue;
-		}
-		// ******************************************************************
-		
-		// ******************************************************************
-		// a daki sıralama en son değişmeli bu sebeple a nın birebir aynısı tmp üzerinden bitleri dolaşağız, her turda tmp güncellenmeli
-		// radixde b için tmp gibi bir tutucuya ihtiyaç yok çünkü rrb gibi bir işlem yapılmıyor
-		i = 1;
-		while (i < gc)
-		{
-			tmp[i - 1] = mystacks.a[i - 1];
+				if (gv[gc][i] != '-' || gv[gc][i] != '+')
+					return 0;
+			}	
 			i++;
 		}
-		// ******************************************************************
-		//RADİX**************************************************************
-		i = mystacks.asize - 1; // a stack inde en üstteki sayıdan başlıyoruz kontrol etmeye
-		//kontrol edilen bit 0 ise b ye pushluyoruz, kontrol ettiğimiz bit 1 ise rra ile a nın sonuna ekliyoruz
-		while (i >= 0)
-		{
-			if(tmp[i] & (1 << j))
-				rra(&mystacks);
-			else
-				pb(&mystacks);
-			i--;
-		}
-		// B ye pushlananların hepsi tekrar a ya pushlandığında A daki sayılar basamağa göre sıralanmış oluyor, tüm basamaklar için yapıldıgında sayılar tam olarak sıralanmış oluyor  
-		i = mystacks.bsize - 1;
-		while(i >= 0)
-		{
-			pa(&mystacks);
-			i--;
-		}
-		//RADİX**************************************************************
-		j++;
+		gc--;
 	}
-	printf("\n");
-	i = 0; //a stack yazdırmak için kullandım
-	while (i < (gc - 1))
+	return 1;
+}
+
+int	doublecheck(int gc, char **gv)
+{
+	int i;
+	int j;
+	int number;
+
+	i = 0;
+	while (i < gc)
 	{
-		printf("%d ",mystacks.a[i]);
+		j = i+1;
+		number = ft_atoi(gv[i]);
+		while (j < gc)
+		{
+			if (number == ft_atoi(gv[j]))
+				return 0;
+			j++;	
+		}
 		i++;
 	}
+	return 1;
+}
+
+void mradix(t_mystack *data)
+{
+	int i; // sayının son indexindeki biti 1 ise push_b 0 ise reverse_a çalışacak
+	int j;
+	int tmpsize;
+	int *tmp;
+	
+    j = 0;
+	tmp = ft_calloc(data->asize, sizeof(int));
+	while (j < 32)
+	{
+		if ("eğer bitler sıralıysa işlem yapma")
+			continue;
+		i = 1; 	/*A stackini tmp ye aktarıyoruz*/
+		while (i <= (data->asize))
+		{
+			tmp[i - 1] = data->a[i - 1];
+			i++;
+		}
+		tmpsize = data->asize;
+		i = 0;
+		while (i < tmpsize)
+		{
+			if(tmp[i] & (1 << j))
+				push_b(data);
+			else
+				reverse_a(data);
+			i++;
+		}
+		i = 0;
+		tmpsize = data->bsize;
+		while(i < tmpsize)
+		{
+			push_a(data);
+			i++;
+		}
+		j++;
+	}
+}
+
+int main(int gc, char **gv)
+{
+	if (gc == 1)
+		return (0);
+	if (gc > 1)
+	{
+		int i;
+		t_mystack	data;
+		
+		if (!isnumber(gc, gv) || !doublecheck(gc, gv))
+		{
+			ft_error();
+			return (0);
+		}
+		if ("gecerli sayi araliğinda değilse hata mesajı bas")
+			;
+		tofill(gc, gv, &data);
+		indexing(&data);
+		mradix(&data);
+		
+		printf("\n");
+		i = 0;
+		while (i < (gc - 1))
+		{
+			printf("%d ",data.a[i]);
+			i++;
+		}
+	}	
 	return (0);
 }

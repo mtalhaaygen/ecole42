@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:40:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/01/30 22:41:35 by maygen           ###   ########.fr       */
+/*   Updated: 2023/02/28 17:58:03 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct mystacks {
 	size_t	bsize;
 }	t_mystack;
 
-void	pa(t_mystack *mystacks);
-void	pb(t_mystack *mystacks);
-void	rra(t_mystack *mystacks);
-
+void	push_a(t_mystack *mystacks);
+void	push_b(t_mystack *mystacks);
+void	reverse_a(t_mystack *mystacks);
+int		*indexing(t_mystack *arrr);
+void 	comb_sort(int *arr,int size, int *x);
 
 #endif
