@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:58:23 by maygen            #+#    #+#             */
-/*   Updated: 2023/02/28 17:07:32 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/01 19:19:45 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,65 @@ int		*indexing(t_mystack *arrr)
         i++;
     }
     return 0;
+}
+
+void mradix(t_mystack *data, int loop)
+{
+	int i; // sayının son indexindeki biti 1 ise push_b 0 ise reverse_a çalışacak
+	int j;
+	int tmpsize;
+	int *tmp;
+	
+    j = 0;
+	tmp = ft_calloc(data->asize, sizeof(int));
+	while (j < loop) // bu döngü max 32 kez dönecek
+	{
+		i = 1; 	/*A stackini tmp ye aktarıyoruz*/
+		while (i <= (data->asize))
+		{
+			tmp[i - 1] = data->a[i - 1];
+			i++;
+		}
+		tmpsize = data->asize;
+		i = 0;
+		while (i < tmpsize)
+		{
+			if(tmp[i] & (1 << j))
+				reverse_a(data);
+			else
+				push_b(data);
+			i++;
+		}
+		i = 0;
+		tmpsize = data->bsize;
+		while(i < tmpsize)
+		{
+			push_a(data);
+			i++;
+		}
+		j++;
+	}
+}
+
+int find(int loop)
+{
+    if (loop < 4)
+        return 2;
+    else if (loop < 8)
+        return 3;
+    else if (loop <= 16)
+        return 4;
+    else if (loop < 32)
+        return 5;
+    else if (loop <= 64)
+        return 6;
+    else if (loop <= 32768)
+        return 16;
+        // ...
+        // ...
+        // ...
+    // bunu return 32 ye kadar yapsak okey ama böyle manuel hiç hoş durmadı
+    // finde max sayıyı parametre olarak veriyorum ve 
+    // bu max sayının en fazla kaç biti dolu olabilir bu fonksiyonla bulacagız 
+    //buna göre mradix fonksiyonundaki while ın kaç kere dönceği belirlenmiş olacak
 }

@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/01 15:57:04 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/01 18:57:09 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,46 +78,6 @@ int	doublecheck(int gc, char **gv)
 	return 1;
 }
 
-void mradix(t_mystack *data)
-{
-	int i; // sayının son indexindeki biti 1 ise push_b 0 ise reverse_a çalışacak
-	int j;
-	int tmpsize;
-	int *tmp;
-	
-    j = 0;
-	tmp = ft_calloc(data->asize, sizeof(int));
-	while (j < 32)
-	{
-		if ("eğer bitler sıralıysa işlem yapma")
-			continue;
-		i = 1; 	/*A stackini tmp ye aktarıyoruz*/
-		while (i <= (data->asize))
-		{
-			tmp[i - 1] = data->a[i - 1];
-			i++;
-		}
-		tmpsize = data->asize;
-		i = 0;
-		while (i < tmpsize)
-		{
-			if(tmp[i] & (1 << j))
-				push_b(data);
-			else
-				reverse_a(data);
-			i++;
-		}
-		i = 0;
-		tmpsize = data->bsize;
-		while(i < tmpsize)
-		{
-			push_a(data);
-			i++;
-		}
-		j++;
-	}
-}
-
 int main(int gc, char **gv)
 {
 	if (gc == 1)
@@ -135,8 +95,8 @@ int main(int gc, char **gv)
 		if ("gecerli sayi araliğinda değilse hata mesajı bas")
 			;
 		tofill(gc, gv, &data);
-		indexing(&data);
-		mradix(&data);
+		// indexing(&data);
+		mradix(&data, find(data.asize - 1));
 		
 		printf("\n");
 		i = 0;
