@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/01 18:57:09 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/04 12:26:17 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	isnumber(int gc, char **gv)
 		{
 			if (!ft_isdigit(gv[gc][i]))
 			{
-				if (gv[gc][i] != '-' || gv[gc][i] != '+')
+				if (gv[gc][i] != '-' && gv[gc][i] != '+')
 					return 0;
 			}	
 			i++;
@@ -62,16 +62,16 @@ int	doublecheck(int gc, char **gv)
 	int j;
 	int number;
 
-	i = 0;
-	while (i < gc)
+	i = 1;
+	while (i < gc - 1)
 	{
-		j = i+1;
+		j = i + 1;
 		number = ft_atoi(gv[i]);
 		while (j < gc)
 		{
 			if (number == ft_atoi(gv[j]))
 				return 0;
-			j++;	
+			j++;
 		}
 		i++;
 	}
@@ -92,19 +92,12 @@ int main(int gc, char **gv)
 			ft_error();
 			return (0);
 		}
-		if ("gecerli sayi araliğinda değilse hata mesajı bas")
-			;
+		// if ("gecerli sayi araliğinda değilse hata mesajı bas")
+		// 	;
 		tofill(gc, gv, &data);
-		// indexing(&data);
-		mradix(&data, find(data.asize - 1));
-		
-		printf("\n");
-		i = 0;
-		while (i < (gc - 1))
-		{
-			printf("%d ",data.a[i]);
-			i++;
-		}
+		indexing(&data);
+		mradix(&data);
+
 	}	
 	return (0);
 }

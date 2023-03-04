@@ -21,7 +21,7 @@ void	push_a(t_mystack *mystacks)
 		mystacks->b[i] = mystacks->b[i + 1];
 		i++;
 	}
-    printf("pa ");
+    printf("pa\n");
 }
 
 void	push_b(t_mystack *mystacks)
@@ -45,7 +45,7 @@ void	push_b(t_mystack *mystacks)
             mystacks->a[i] = mystacks->a[i + 1];
             i++;
         }
-        printf("pb ");
+        printf("pb\n");
     }
 }
 
@@ -62,45 +62,48 @@ void	reverse_a(t_mystack *mystacks)
         i++;
     }
     mystacks->a[i] = tmp;
-    printf("ra ");
+    printf("ra\n");
 }
 
-// int main(int gc, char **gv)
-// {
-//     int			i;
-//     t_mystack   mystacks;
-
-// 	i = 1;
-// 	mystacks.asize = gc - 1;
-// 	mystacks.a = calloc((mystacks.asize) ,sizeof(int));
-// 	mystacks.b = calloc((mystacks.asize) ,sizeof(int));
-// 	mystacks.bsize = 0;
-// 	while (i < gc)
-// 	{
-// 		// burada girilen değerlerle a stack i dolduruyorum
-// 		mystacks.a[i - 1] = atoi(gv[i]);
-// 		i++;
-// 	}
-
-//     // reverse_a(&mystacks);
-//     push_b(&mystacks);
-//     push_b(&mystacks);
-//     push_b(&mystacks);
-//     push_a(&mystacks);
-//     push_a(&mystacks);
-    
-//     printf("\n");
-// 	i = 0;
-// 	while (i < (mystacks.asize))
-// 	{
-// 		printf("%d ",mystacks.a[i]);
-// 		i++;
-// 	}
-//     printf("\n");
-// 	i = 0;
-// 	while (i < (mystacks.bsize))
-// 	{
-// 		printf("%d ",mystacks.b[i]);
-// 		i++;
-// 	}
-// }
+void mradix(t_mystack *data)
+{
+	int i;
+	int j;
+	int tmpsize;
+	int *tmp;
+	
+    j = 0;
+	tmp = ft_calloc(data->asize, sizeof(int));
+	while (j < 32)
+	{
+        if (!(ft_iszero(data, j) && ft_is_one(data, j)))
+        {
+            j++;
+            continue;
+        }
+		i = 1;
+		while (i <= (data->asize))
+		{
+			tmp[i - 1] = data->a[i - 1];
+			i++;
+		}
+		tmpsize = data->asize;
+		i = 0;
+		while (i < tmpsize)
+		{
+			if(tmp[i] & (1 << j))
+				reverse_a(data);
+			else
+				push_b(data);
+			i++;
+		}
+		i = 0;
+		tmpsize = data->bsize;
+		while(i < tmpsize)
+		{
+			push_a(data);
+			i++;
+		}
+		j++;
+	}
+}

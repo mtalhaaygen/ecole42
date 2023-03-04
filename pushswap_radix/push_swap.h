@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:40:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/01 19:08:01 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/04 12:09:25 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	push_b(t_mystack *mystacks);
 void	reverse_a(t_mystack *mystacks);
 void 	comb_sort(int *arr,int size, int *x);
 int		*indexing(t_mystack *arrr);
-void 	mradix(t_mystack *data, int loop);
-int		find(int loop);
+void 	mradix(t_mystack *data);
+int		ft_is_one(t_mystack *data, int j);
+int		ft_iszero(t_mystack *data, int j);
 
 #endif
