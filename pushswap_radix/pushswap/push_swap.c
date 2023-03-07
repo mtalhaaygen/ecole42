@@ -6,30 +6,28 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/04 12:26:17 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/07 13:29:26 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error()
-{
-	write(1, "Error\n", 5);
-}
-
 void	tofill(int gc, char **gv, t_mystack *mystacks)
 {
-	int			i;
+	int		i;
+	char	*c;
+	char	**argumans;
 
-	i = 1;
-	mystacks->asize = gc - 1;
+	c = merget(gc, gv);
+	mystacks->asize = ft_word_count(c, ' ');
+	argumans = ft_split(merget(gc, gv), ' ');
 	mystacks->a = ft_calloc((mystacks->asize) ,sizeof(int));
 	mystacks->b = ft_calloc((mystacks->asize) ,sizeof(int));
 	mystacks->bsize = 0;
-	while (i < gc)
+	i = 0;
+	while (i <= mystacks->asize - 1)
 	{
-		// burada girilen değerlerle a stack i dolduruyorum
-		mystacks->a[i - 1] = ft_atoi(gv[i]);
+		mystacks->a[i] = ft_atoi(argumans[i]);
 		i++;
 	}
 }
@@ -37,39 +35,41 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 int	isnumber(int gc, char **gv)
 {
 	int i;
+	char	*str;
 
-	gc--;
-	while (gc > 1)
+	i = 0;
+	str = merget(gc, gv);
+	while (i < ft_strlen(str))
 	{
-		i = 0;
-		while (gv[gc][i] != '\0')
+		if (!ft_isdigit(str[i]))
 		{
-			if (!ft_isdigit(gv[gc][i]))
-			{
-				if (gv[gc][i] != '-' && gv[gc][i] != '+')
-					return 0;
-			}	
-			i++;
-		}
-		gc--;
+			if ((str[i] != '-' && str[i] != '+' && str[i] != ' ') 
+			|| ((str[i] == '-' || str[i] == '+' ) && str[i + 1] == ' '))
+				return 0;
+		}	
+		i++;
 	}
 	return 1;
 }
 
 int	doublecheck(int gc, char **gv)
 {
-	int i;
-	int j;
-	int number;
+	int		i;
+	int		j;
+	int		size;
+	int		number;
+	char	**str;
 
-	i = 1;
-	while (i < gc - 1)
+	i = 0;
+	size = ft_word_count(merget(gc, gv), ' ');
+	str = ft_split(merget(gc, gv), ' ');
+	while (i < size)
 	{
 		j = i + 1;
-		number = ft_atoi(gv[i]);
-		while (j < gc)
+		number = ft_atoi(str[i]);
+		while (j < size)
 		{
-			if (number == ft_atoi(gv[j]))
+			if (number == ft_atoi(str[j]))
 				return 0;
 			j++;
 		}
@@ -78,26 +78,44 @@ int	doublecheck(int gc, char **gv)
 	return 1;
 }
 
+void	select_sort(t_mystack *data, int size)
+{
+	if (size == 2)
+		swap_a(data);
+	else if (size == 3)
+		sort_three(data);
+	else if (size == 4)
+		sort_four(data);
+	else if (size == 5)
+		sort_five(data);
+	else
+		mradix(data);
+}
+
 int main(int gc, char **gv)
 {
 	if (gc == 1)
 		return (0);
 	if (gc > 1)
 	{
-		int i;
 		t_mystack	data;
-		
-		if (!isnumber(gc, gv) || !doublecheck(gc, gv))
+		int		i;
+
+		if (!isnumber(gc,gv) || !doublecheck(gc,gv))
 		{
 			ft_error();
 			return (0);
 		}
-		// if ("gecerli sayi araliğinda değilse hata mesajı bas")
-		// 	;
 		tofill(gc, gv, &data);
 		indexing(&data);
-		mradix(&data);
-
-	}	
+		if (!ft_issorted(data.a, data.asize))
+			select_sort(&data, data.asize);
+		i = 0;
+		while (i < data.asize)
+		{
+			printf("%d ",data.a[i]);
+			i++;
+		}	
+	}
 	return (0);
 }
