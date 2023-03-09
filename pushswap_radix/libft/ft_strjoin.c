@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:56:59 by maygen            #+#    #+#             */
-/*   Updated: 2022/10/21 11:51:52 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/09 21:09:28 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[i] = s1[i];
 		i++;
 	}
+	free((void *)s1);
 	while (s2[j])
 	{
 		str[i] = s2[j];
