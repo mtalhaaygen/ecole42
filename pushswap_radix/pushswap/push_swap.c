@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/07 13:29:26 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/09 21:16:38 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 	c = merget(gc, gv);
 	mystacks->asize = ft_word_count(c, ' ');
 	argumans = ft_split(merget(gc, gv), ' ');
-	mystacks->a = ft_calloc((mystacks->asize) ,sizeof(int));
-	mystacks->b = ft_calloc((mystacks->asize) ,sizeof(int));
+	mystacks->a = ft_calloc((mystacks->asize), sizeof(int));
+	mystacks->b = ft_calloc((mystacks->asize), sizeof(int));
 	mystacks->bsize = 0;
 	i = 0;
 	while (i <= mystacks->asize - 1)
@@ -30,11 +30,15 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 		mystacks->a[i] = ft_atoi(argumans[i]);
 		i++;
 	}
+	printf("c:%p -- argumans:%p", c, *argumans);
+	free(c);
+	free(*argumans);
+	free(argumans);
 }
 
 int	isnumber(int gc, char **gv)
 {
-	int i;
+	int		i;
 	char	*str;
 
 	i = 0;
@@ -43,13 +47,15 @@ int	isnumber(int gc, char **gv)
 	{
 		if (!ft_isdigit(str[i]))
 		{
-			if ((str[i] != '-' && str[i] != '+' && str[i] != ' ') 
-			|| ((str[i] == '-' || str[i] == '+' ) && str[i + 1] == ' '))
-				return 0;
+			if ((str[i] != '-' && str[i] != '+' && str[i] != ' ') || \
+			((str[i] == '-' || str[i] == '+' ) && (str[i + 1] == ' ' || \
+			str[i + 1] == '+' || str[i + 1] == '-' )))
+				return (0);
 		}	
 		i++;
 	}
-	return 1;
+	free(str);
+	return (1);
 }
 
 int	doublecheck(int gc, char **gv)
@@ -70,12 +76,12 @@ int	doublecheck(int gc, char **gv)
 		while (j < size)
 		{
 			if (number == ft_atoi(str[j]))
-				return 0;
+				return (0);
 			j++;
 		}
 		i++;
 	}
-	return 1;
+	return (1);
 }
 
 void	select_sort(t_mystack *data, int size)
@@ -92,30 +98,34 @@ void	select_sort(t_mystack *data, int size)
 		mradix(data);
 }
 
-int main(int gc, char **gv)
+int	main(int gc, char **gv)
 {
+	int			i;
+	t_mystack	data;
+
 	if (gc == 1)
 		return (0);
 	if (gc > 1)
 	{
-		t_mystack	data;
-		int		i;
-
-		if (!isnumber(gc,gv) || !doublecheck(gc,gv))
+		// || !doublecheck(gc, gv)
+		if (!isnumber(gc, gv) )
 		{
 			ft_error();
 			return (0);
 		}
 		tofill(gc, gv, &data);
-		indexing(&data);
-		if (!ft_issorted(data.a, data.asize))
-			select_sort(&data, data.asize);
-		i = 0;
-		while (i < data.asize)
-		{
-			printf("%d ",data.a[i]);
-			i++;
-		}	
+		// indexing(&data);
+		// if (!ft_issorted(data.a, data.asize))
+		// 	select_sort(&data, data.asize);
 	}
+	// free(data.a);
+	// free(data.b);
+	i = 0;
+	while (i < data.asize)
+	{
+		printf("%d ", data.a[i]);
+		i++;
+	}
+	system("leaks push_swap");
 	return (0);
 }
