@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/20 00:21:57 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/20 00:53:22 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 
 	c = merget(gc, gv);
 	mystacks->asize = ft_word_count(c, ' ');
-	argumans = ft_split(merget(gc, gv), ' ');
+	argumans = ft_split(c, ' ');
 	mystacks->a = ft_calloc((mystacks->asize), sizeof(int));
 	mystacks->b = ft_calloc((mystacks->asize), sizeof(int));
 	mystacks->bsize = 0;
@@ -30,6 +30,13 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 		mystacks->a[i] = ft_atoi(argumans[i]);
 		i++;
 	}
+	for (int i = 0; i < mystacks->asize; i++)
+	{
+		free(argumans[i]);
+	}
+	free(argumans);
+	free(c);
+	
 	// printf("c:%p -- argumans:%p", c, *argumans);
 }
 
@@ -62,10 +69,12 @@ int	doublecheck(int gc, char **gv)
 	int		size;
 	int		number;
 	char	**str;
+	char	*tmp;
 
+	tmp = merget(gc, gv);
 	i = 0;
-	size = ft_word_count(merget(gc, gv), ' ');
-	str = ft_split(merget(gc, gv), ' ');
+	size = ft_word_count(tmp, ' ');
+	str = ft_split(tmp, ' ');
 	while (i < size)
 	{
 		j = i + 1;
@@ -78,6 +87,13 @@ int	doublecheck(int gc, char **gv)
 		}
 		i++;
 	}
+	free(tmp);
+	for (int i = 0; i < size; i++)
+	{
+		free(str[i]);
+	}
+	free(str);
+	
 	return (1);
 }
 
@@ -115,8 +131,8 @@ int	main(int gc, char **gv)
 		if (!ft_issorted(data.a, data.asize))
 			select_sort(&data, data.asize);
 	}
-	// free(data.a);
-	// free(data.b);
+	free(data.a);
+	free(data.b);
 	i = 0;
 	while (i < data.asize)
 	{
