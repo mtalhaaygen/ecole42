@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:13:59 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/09 20:52:39 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/14 17:58:38 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*merget(int gc, char **gv)
 	char	*str;
 
 	i = 1;
-	str = malloc(2 * sizeof(*str));
+	str = (char *)malloc(2 * sizeof(*str));
 	while (i < gc)
 	{
 		str = ft_strjoin(str, gv[i]);

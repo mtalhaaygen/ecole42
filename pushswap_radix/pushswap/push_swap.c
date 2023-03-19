@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/09 21:16:38 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/20 00:21:57 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 		mystacks->a[i] = ft_atoi(argumans[i]);
 		i++;
 	}
-	printf("c:%p -- argumans:%p", c, *argumans);
-	free(c);
-	free(*argumans);
-	free(argumans);
+	// printf("c:%p -- argumans:%p", c, *argumans);
 }
 
 int	isnumber(int gc, char **gv)
@@ -107,16 +104,16 @@ int	main(int gc, char **gv)
 		return (0);
 	if (gc > 1)
 	{
-		// || !doublecheck(gc, gv)
-		if (!isnumber(gc, gv) )
+		// 
+		if (!isnumber(gc, gv) || !doublecheck(gc, gv))
 		{
 			ft_error();
 			return (0);
 		}
 		tofill(gc, gv, &data);
-		// indexing(&data);
-		// if (!ft_issorted(data.a, data.asize))
-		// 	select_sort(&data, data.asize);
+		indexing(&data);
+		if (!ft_issorted(data.a, data.asize))
+			select_sort(&data, data.asize);
 	}
 	// free(data.a);
 	// free(data.b);
