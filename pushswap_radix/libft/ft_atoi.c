@@ -6,12 +6,13 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:39:04 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/07 11:43:21 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/20 18:02:22 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-void	ft_error()
+
+void	ft_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);
@@ -38,13 +39,9 @@ int	ft_atoi(const char *str)
 	{
 		res = res * 10 + (str[i] - 48) * neg;
 		if (res > 2147483647)
-		{
 			ft_error();
-		}
 		if (res < -2147483648)
-		{
 			ft_error();
-		}
 		i++;
 	}
 	return (res);

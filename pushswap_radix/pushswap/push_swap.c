@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:08:36 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/20 00:53:22 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/03/21 01:23:31 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,11 @@ void	tofill(int gc, char **gv, t_mystack *mystacks)
 		mystacks->a[i] = ft_atoi(argumans[i]);
 		i++;
 	}
-	for (int i = 0; i < mystacks->asize; i++)
-	{
+	i = -1;
+	while (++i < mystacks->asize)
 		free(argumans[i]);
-	}
 	free(argumans);
 	free(c);
-	
-	// printf("c:%p -- argumans:%p", c, *argumans);
 }
 
 int	isnumber(int gc, char **gv)
@@ -67,33 +64,27 @@ int	doublecheck(int gc, char **gv)
 	int		i;
 	int		j;
 	int		size;
-	int		number;
 	char	**str;
 	char	*tmp;
 
+	i = -1;
 	tmp = merget(gc, gv);
-	i = 0;
 	size = ft_word_count(tmp, ' ');
 	str = ft_split(tmp, ' ');
-	while (i < size)
-	{
-		j = i + 1;
-		number = ft_atoi(str[i]);
-		while (j < size)
-		{
-			if (number == ft_atoi(str[j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
 	free(tmp);
-	for (int i = 0; i < size; i++)
+	while (++i < size)
 	{
-		free(str[i]);
+		j = i;
+		while (++j < size)
+		{
+			if (ft_atoi(str[i]) == ft_atoi(str[j]))
+				return (0);
+		}
 	}
+	i = -1;
+	while (++i < size)
+		free(str[i]);
 	free(str);
-	
 	return (1);
 }
 
@@ -120,12 +111,14 @@ int	main(int gc, char **gv)
 		return (0);
 	if (gc > 1)
 	{
-		// 
 		if (!isnumber(gc, gv) || !doublecheck(gc, gv))
 		{
 			ft_error();
 			return (0);
 		}
+		if (gc == 2)
+			if (whitespace(gv[1]))
+				return (0);
 		tofill(gc, gv, &data);
 		indexing(&data);
 		if (!ft_issorted(data.a, data.asize))
@@ -133,12 +126,5 @@ int	main(int gc, char **gv)
 	}
 	free(data.a);
 	free(data.b);
-	i = 0;
-	while (i < data.asize)
-	{
-		printf("%d ", data.a[i]);
-		i++;
-	}
-	system("leaks push_swap");
 	return (0);
 }

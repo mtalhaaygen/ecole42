@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:58:23 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/20 00:41:54 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:46:44 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,14 @@ int	*indexing(t_mystack *arrr)
 	i = 0;
 	while (i < arrr->asize)
 	{
-		j = 0;
-		while (j < arrr->asize)
+		j = -1;
+		while (++j < arrr->asize)
 		{
 			if (tmp[j] == arrr->a[i])
 			{
 				arrr->a[i] = j;
 				break ;
 			}
-			j++;
 		}
 		i++;
 	}

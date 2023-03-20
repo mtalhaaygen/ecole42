@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arguman_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:13:59 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/20 00:40:45 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:58:19 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*merget(int gc, char **gv)
 	char	*str;
 
 	i = 1;
-	str = (char *)malloc(2 * sizeof(*str));
+	str = (char *)ft_calloc(2, sizeof(*str));
 	while (i < gc)
 	{
 		str = ft_strjoin(str, gv[i]);
