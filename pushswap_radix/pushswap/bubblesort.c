@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:58:23 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/09 18:13:41 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/20 00:41:54 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int	*indexing(t_mystack *arrr)
 		}
 		i++;
 	}
+	free(tmp);
 	return (0);
 }

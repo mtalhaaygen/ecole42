@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arguman_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 01:13:59 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/14 17:58:38 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/20 00:40:45 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

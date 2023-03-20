@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:45:26 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/09 17:30:33 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/20 00:59:03 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ void	mradix(t_mystack *data)
 		nradix(data, tmp, tmpsize, j);
 		j++;
 	}
+	free(tmp);
 }
