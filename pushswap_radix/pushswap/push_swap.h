@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:40:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/09 16:36:26 by maygen           ###   ########.fr       */
+/*   Updated: 2023/03/22 17:28:18 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ void	sort_five(t_mystack *data);
 void	sort_four(t_mystack *data);
 void	sort_three(t_mystack *data);
 char	*merget(int gc, char **gv);
+int		whitespace(char *str);
 
 #endif
