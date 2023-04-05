@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:19:39 by maygen            #+#    #+#             */
-/*   Updated: 2023/03/29 14:52:03 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/05 00:16:07 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,7 @@ int	error_code(int code)
 	exit(1);
 }
 
-t_map map_init(char *src)
-{
-	t_map	*rt_map;
-	int		i;
 
-	rt_map = (t_map *)malloc(sizeof(t_map));
-	if (!rt_map)
-		error_code(-500);
-    if (ft_strcmp(src + ft_strrchr(src, '.') + 1, "ber") == 0)
-		error_code(-1);
-}
 
 int	main(int ac, char **av)
 {
@@ -59,8 +49,6 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (error_code(-42));
 	else
-	{
-		map_init(av[1]);
-	}
+		game->map = map_init(av[1]);
 	return (0);
 }
