@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:06:49 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/04 21:50:40 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/06 08:54:32 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	is_map_size_valid(t_map *rt_map)
 t_map	*map_init(char *src)
 {
 	t_map	*rt_map;
-	int		i;
 
 	rt_map = (t_map *)malloc(sizeof(t_map));
 	if (!rt_map)

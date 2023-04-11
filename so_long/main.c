@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:19:39 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/05 00:16:07 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 12:25:52 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,21 @@ int	error_code(int code)
 	exit(1);
 }
 
-
+int	physics_engine(int key, t_game *game)
+{
+	if (key == 0)
+		to_left(game);
+	if (key == 1)
+		to_down(game);
+	if (key == 2)
+		to_right(game);
+	if (key == 13)
+		to_up(game);
+	if (key == 53)
+		error_code(1);
+	render_move(game, key);
+	return (1);
+}
 
 int	main(int ac, char **av)
 {
@@ -49,6 +63,15 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (error_code(-42));
 	else
+	{
 		game->map = map_init(av[1]);
+		init_structs(game);
+		init_images(game);
+		render_map(game);
+		game->move = 0;
+		mlx_hook(game->window, ON_KEYDOWN, 0, physics_engine, game);
+		mlx_hook(game->window, ON_DESTROY, 0, error_code, NULL);
+		mlx_loop(game->mlx);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:23:15 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/04 21:48:45 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/06 07:43:16 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ char	*ft_read(int fd)
 		rd[count] = 0;
 		rt = ft_strjoin(rt, rd);
 	}
-        printf("%s\n",rt);
 	if (ft_strlen(rt) == 0)
 	{
 		write(2, "Error empty file\n", 17);

@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 01:16:56 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/04 21:47:59 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/06 08:57:05 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ char    *ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen(s))
+	if ((int)start > ft_strlen(s))
 		return (ft_strdup(""));
-	if (len > ft_strlen(s))
+	if ((int)len > ft_strlen(s))
 		len = ft_strlen(s) - start;
 	ptr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ptr)
