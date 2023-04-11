@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 04:28:11 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/04/06 12:28:14 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 20:18:29 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	to_left(t_game *game)
 		{
 			to_collect(game->coins, i, j - 1);
 			to_move(game, i, j, 0);
-			render_cordinate(game, game->exit_i, game->exit_j);
+			render_cordinate(game, game->exit_i, game->exit_j); // burada E tekrar basılıyor 
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 12:29:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 12:37:31 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 20:19:21 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	to_move(t_game *game, int i, int j, int key)
 		game->map->map[i - 1][j] = 'P';
 		*game->player_i -= 1;
 	}
+	render_move(game, key);
 	move_count(game->move);
 }

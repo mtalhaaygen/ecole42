@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:19:39 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 12:25:52 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 20:56:26 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int ac, char **av)
 		init_structs(game);
 		init_images(game);
 		render_map(game);
-		game->move = 0;
+		hud_render(game);
 		mlx_hook(game->window, ON_KEYDOWN, 0, physics_engine, game);
 		mlx_hook(game->window, ON_DESTROY, 0, error_code, NULL);
 		mlx_loop(game->mlx);

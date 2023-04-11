@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:39:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 12:40:26 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 20:34:11 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,5 @@ void	to_collect(t_coins *c, int i, int j);
 void	try_exit(t_game *game);
 void	move_count(int num);
 void	render_move(t_game *game, int code);
+void	hud_render(t_game *game);
 #endif

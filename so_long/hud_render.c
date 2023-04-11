@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:31:28 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/04/06 12:30:30 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 20:57:41 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	render_move_count(t_game *game)
 		"Move = ");
 	mlx_string_put(game->mlx, game->window, 50, 16, game->color << 16, move);
 	free (move);
-}	
+}
 
 void	render_coin_count(t_game *game)
 {

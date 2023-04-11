@@ -63,25 +63,21 @@ int	main(void)
 	game->img_width = 64;
 	game->img1 = mlx_xpm_file_to_image(game->mlx, relative_path, &game->img_width, &game->img_height);
 	game->img2 = mlx_xpm_file_to_image(game->mlx, relative_path2, &game->img_width, &game->img_height);
-	int i = 0;
-	while (i < 16)
-	{
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * i, game->img_height);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (10 + i), game->img_height * i);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (3 + i), game->img_height * i);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (3 + i), game->img_height * (i + 1));
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * 6, game->img_height * i);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * 7, game->img_height * i);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (i), game->img_height * 10);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (i), game->img_height * 9);
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (i), game->img_height * 8);
-		i++;
-	}
-	while (i > 0)
-	{
-		i--;
-	}
-	
+	// int i = 0;
+	// while (i < 16)
+	// {
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * i, game->img_height);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (10 + i), game->img_height * i);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (3 + i), game->img_height * i);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (3 + i), game->img_height * (i + 1));
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * 6, game->img_height * i);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * 7, game->img_height * i);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (i), game->img_height * 10);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (i), game->img_height * 9);
+	// 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img1, game->img_width * (i), game->img_height * 8);
+	// 	i++;
+	// }
+
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->img2, game->img_width, game->img_height);
 
     mlx_hook(game->mlx_win, 2, 0, physics_engine, game);

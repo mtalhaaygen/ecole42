@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 09:14:37 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/06 16:36:56 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/11 21:00:18 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	render_map(t_game *game)
 	{
 		j = -1;
 		while (game->map->map[i][++j])
-		{
 			render_cordinate(game, i, j);
-		}
 	}
 }
