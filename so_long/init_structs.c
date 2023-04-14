@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 07:39:44 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 20:20:02 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 14:22:33 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	init_structs(t_game *game)
 	game->coins = coins;
 	game->player = player;
 	game->move = 0;
-	game->coin = &game->map->coins;
+	game->coin = game->map->coins;
 	game->player_i = &game->player->player_i;
 	game->player_j = &game->player->player_j;
 	exit_cordinates(game->map, game);

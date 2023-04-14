@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:19:39 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 20:56:26 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 14:09:20 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	physics_engine(int key, t_game *game)
 		to_up(game);
 	if (key == 53)
 		error_code(1);
+	hud_render(game);
 	render_move(game, key);
 	return (1);
 }

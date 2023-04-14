@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 09:39:47 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 20:18:08 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 13:53:48 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_exit(t_game *g, int i, int j)
 {
-	if (*g->coin != 0)
+	if (*g->coins->coins_c != 0)
 		mlx_put_image_to_window(g->mlx, g->window, g->exit_imgs[1],
 			j * RES, i * RES);
 	else

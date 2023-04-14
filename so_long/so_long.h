@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:39:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 20:34:11 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 15:48:14 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ enum events{
 };
 
 # define WALL_SRC "img/wall.xpm"
-# define FLOOR_SRC "img/backgroung.xpm"
+# define FLOOR_SRC "img/floor.xpm"
 # define EXITA_SRC "img/EA.xpm"
 # define EXITDA_SRC "img/EDA.xpm"
-# define PLAYER_SRC "img/K.xpm"
-# define COIN_SRC "img/PT.xpm"
-
-#include <stdio.h>
+# define PLAYER_SRC "img/player.xpm"
+# define COIN_SRC "img/19.xpm"
 typedef struct s_coins
 {
 	int		*coins_c;
@@ -65,13 +63,11 @@ typedef struct s_game
 	void		**exit_imgs;
 	int			move;
 	int			res;
-	int			*coin;
+	int			coin;
 	int			*player_i;
 	int			*player_j;
 	int			exit_i;
 	int			exit_j;
-	int			color;
-	int			delta;
 	char		**m;
 	t_map		*map;
 	t_coins		*coins;

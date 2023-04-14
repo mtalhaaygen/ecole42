@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:34:49 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 13:55:49 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 13:34:04 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	map_counter(t_map *map)
 	}
 	if (char_counter(map, 'P') != 1)
 		error_code(-4);
-	if (char_counter(map, 'E') < 1)
+	if (char_counter(map, 'E') != 1)
 		error_code(-4);
 	map->coins = char_counter(map, 'C');
 	if (map->coins == 0)

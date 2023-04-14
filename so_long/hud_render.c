@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 20:31:28 by ooksuz            #+#    #+#             */
-/*   Updated: 2023/04/11 20:57:41 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 15:31:40 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ void	render_move_count(t_game *game)
 	char	*move;
 
 	move = ft_itoa(game->move);
-	mlx_string_put(game->mlx, game->window, 0, 16, game->color << 16,
+	mlx_string_put(game->mlx, game->window, 0, 16, 0x003090,
 		"Move = ");
-	mlx_string_put(game->mlx, game->window, 50, 16, game->color << 16, move);
+	mlx_string_put(game->mlx, game->window, 50, 16, 0x003090, move);
 	free (move);
 }
 
 void	render_coin_count(t_game *game)
 {
-	char	*move;
+	char	*co;
 
-	move = ft_itoa(game->move);
-	mlx_string_put(game->mlx, game->window, 0, 30, game->color << 16,
-		"Coin = ");
-	mlx_string_put(game->mlx, game->window, 50, 30, game->color << 16, move);
-	free (move);
+	co = ft_itoa(game->coin - *game->coins->coins_c);
+	mlx_string_put(game->mlx, game->window, 0, 30, 0x003090,
+		"Score = ");
+	mlx_string_put(game->mlx, game->window, 50, 30, 0x003090, co);
+	free (co);
 }
 
 void	hud_render(t_game *game)
@@ -68,9 +68,4 @@ void	hud_render(t_game *game)
 	render_cordinate(game, 0, 1);
 	render_move_count(game);
 	render_coin_count(game);
-	game->color += game->delta;
-	if (game->color == 255)
-		game->delta = -1;
-	if (game->color == 0)
-		game->delta = 1;
 }

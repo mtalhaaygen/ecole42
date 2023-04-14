@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 12:29:32 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/11 20:19:21 by maygen           ###   ########.fr       */
+/*   Updated: 2023/04/14 13:54:44 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	try_exit(t_game *game)
 {
-	if (*game->coin == 0)
+	if (*game->coins->coins_c == 0)
 	{
 		game->move++;
 		move_count(game->move);
