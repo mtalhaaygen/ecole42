@@ -6,7 +6,7 @@
 /*   By: maygen <maygen@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 00:19:39 by maygen            #+#    #+#             */
-/*   Updated: 2023/04/14 14:09:20 by maygen           ###   ########.fr       */
+/*   Updated: 2023/05/20 14:46:29 by maygen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	physics_engine(int key, t_game *game)
 	render_move(game, key);
 	return (1);
 }
-
+#include <stdio.h>
 int	main(int ac, char **av)
 {
 	t_game	*game;
